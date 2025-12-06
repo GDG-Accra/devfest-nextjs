@@ -1,7 +1,6 @@
 name: Deploy to DockerHub
 
 on:
-  # TODO: Remove push after testing
   push:
     branches: [main]
   workflow_dispatch:
