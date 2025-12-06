@@ -1,0 +1,111 @@
+import { useState } from "react";
+import { Plus, Minus } from "lucide-react";
+import Link from "next/link";
+import faqLinkGif from "@/app/assets/images/FAQs/link.gif";
+import Image from "next/image";
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FAQItem[] = [
+  {
+    question: "What is DevFest Accra?",
+    answer:
+      "It's a community-run developer festival in Accra, bringing together tech enthusiasts for both virtual and in-person sessions.",
+  },
+  {
+    question: "What should I bring to DevFest Accra (in-person event)?",
+    answer:
+      "We recommend bringing a laptop if you plan to participate in workshops. You might also want to bring a notebook and pen for taking notes, a water bottle to stay hydrated, and business cards for networking.",
+  },
+  {
+    question: "How can I become a speaker for DevFest Accra?",
+    answer:
+      "If you're interested in speaking, the call for applications opens several months before the main event each year. Updates and application details are shared on our social media platforms.",
+  },
+  {
+    question: "How can I become a sponsor for DevFest Accra?",
+    answer:
+      "Information on sponsoring opportunities and how to get involved is available on a dedicated section of this website. Enquiries can be sent to sponsorships[at]gdgaccra[dot]org.",
+  },
+];
+
+const FAQSection = () => {
+  // Initially no FAQ is open
+  const [activeId, setActiveId] = useState<number | null>(null);
+
+  const toggleFAQ = (id: number) => {
+    // Toggle the current item only
+    setActiveId(activeId === id ? null : id);
+  };
+
+  return (
+    <section className="w-full max-w-7xl mx-auto md:py-20 lg:px-16 px-5 ">
+      <div className="text-center mb-16">
+        <h2 className="max-w-xl mx-auto text-xl text-[#1E1E1E] mb-2 md:mb-4 font-sans">
+          FAQs
+        </h2>
+        <h3 className="text-4xl lg:text-5xl font-bold  text-[#1E1E1E] mb-4">
+          Questions We Get Asked
+        </h3>
+        <p className="max-w-xl mx-auto text-gray-600  mb-2 text-base sm:text-lg md:text-xl">
+          Find answers about registration, event details, and what to expect on
+          the day.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {faqs.map((faq, id) => (
+          <div
+            key={id}
+            className="shadow-md rounded-lg bg-white p-5 overflow-hidden transition-all duration-300 "
+          >
+            <button
+              onClick={() => toggleFAQ(id)}
+              aria-expanded={activeId === id}
+              className="w-full flex gap-4 md:gap-6 items-center text-left"
+            >
+              {activeId === id ? (
+                <Minus size={24} className="text-[#52BD95] shrink-0" />
+              ) : (
+                <Plus size={24} className="text-[#1B1139] shrink-0" />
+              )}
+              <span className="text-left md:text-lg font-semibold font-inter text-[#1B1139]">
+                {faq.question}
+              </span>
+            </button>
+            <div
+              className={`transition-all duration-300 ease-in-out ${
+                activeId === id ? "max-h-48" : "max-h-0"
+              } overflow-hidden`}
+            >
+              <p className="px-10 md:px-12 py-4 md:py-6 text-[#363049] text-sm font-inter">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-center mt-12 mb-10">
+        <Link href="/devfest/faqs">
+          <button className="bg-blue-500 hover:bg-blue-600 transition-colors text-white py-3 px-10 rounded-md flex items-center justify-center gap-2 shadow-md">
+            <span className="text-base font-medium text-white font-inter">
+              More Questions
+            </span>
+            <div className="bg-white rounded-full p-1 w-5 h-5">
+              <Image
+                src={faqLinkGif.src}
+                alt="icon"
+                width={20}
+                height={20}
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </button>
+        </Link>
+      </div>
+    </section>
+  );
+};
+
+export default FAQSection;

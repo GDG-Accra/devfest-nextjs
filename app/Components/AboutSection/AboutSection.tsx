@@ -1,0 +1,46 @@
+import AboutImage_Compressed from "@/app/assets/images/About/AboutImage_Compressed.svg";
+import { Code } from "@/app/assets/elements/code";
+import { Heart } from "@/app/assets/elements/heart";
+import Image from "next/image";
+
+export const AboutSection = () => {
+  return (
+    <section className="container mx-auto px-4 py-12 sm:py-16 md:py-24 lg:py-40 relative mt-20 lg:mt-0 md:mt-0">
+      <div className="flex flex-col md:flex-col lg:flex-row gap-8">
+        {/* Text content on the left */}
+        <div className="lg:w-1/2 px-2 sm:px-4 md:px-6 lg:px-10">
+          <div className="flex mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold ">
+              About <br /> DevFest Accra
+            </h1>
+            <Code className="w-6 md:ml-2" />
+          </div>
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 text-justify">
+            DevFest Accra brings this global experience to Ghana, uniting local
+            developers, designers, and industry experts in an environment that
+            fosters learning and innovation. It serves as a platform for
+            professionals and aspiring technologists to engage with cutting-edge
+            tools, gain hands-on experience, and build meaningful connections
+            within the tech ecosystem. By promoting collaboration and knowledge
+            sharing, DevFest Accra contributes to the expansion and development
+            of Ghana&apos;s technology community.
+          </p>
+        </div>
+
+        {/* Image and heart on the right */}
+        <div className="lg:w-1/2 relative md:mt-5 lg:mt-0 flex justify-center md:pr-5">
+          <div className="relative w-4/5 lg:w-full">
+            <Image
+              src={AboutImage_Compressed.src}
+              alt="About Image"
+              className="w-full h-auto"
+              width={1000}
+              height={1000}
+            />
+            <Heart className="absolute right-0 bottom-0 sm:right-2 md:right-3 lg:right-10 2xl:-right-3" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
