@@ -1,30 +1,59 @@
-declare module "*.svg" {
-  const content: string;
-  export default content;
-}
-
 declare module "*.png" {
-  const content: string;
-  export default content;
+  const value: {
+    src: string;
+    height: number;
+    width: number;
+    blurDataURL?: string;
+  };
+  export default value;
 }
 
 declare module "*.jpg" {
-  const content: string;
-  export default content;
+  const value: {
+    src: string;
+    height: number;
+    width: number;
+    blurDataURL?: string;
+  };
+  export default value;
 }
 
 declare module "*.jpeg" {
-  const content: string;
-  export default content;
+  const value: {
+    src: string;
+    height: number;
+    width: number;
+    blurDataURL?: string;
+  };
+  export default value;
+}
+
+declare module "*.svg" {
+  const value: {
+    src: string;
+    height: number;
+    width: number;
+    blurDataURL?: string;
+  };
+  export default value;
 }
 
 declare module "*.gif" {
-  const content: string;
-  export default content;
+  const value: {
+    src: string;
+    height: number;
+    width: number;
+    blurDataURL?: string;
+  };
+  export default value;
 }
 
 declare module "*.webp" {
-  const content: string;
-  export default content;
+  const value: {
+    src: string;
+    height: number;
+    width: number;
+    blurDataURL?: string;
+  };
+  export default value;
 }
-
